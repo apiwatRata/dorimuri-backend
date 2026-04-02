@@ -23,6 +23,10 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: false,
       },
+      edit_by:{
+        type: Sequelize.BIGINT,
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

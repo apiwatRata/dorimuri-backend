@@ -29,7 +29,16 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+      },
       sex: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      role_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -42,6 +51,10 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal('NOW()')
+      },
+      deleted_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
       }
     });
 

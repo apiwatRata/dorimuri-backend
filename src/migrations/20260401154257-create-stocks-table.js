@@ -9,6 +9,55 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
+    await queryInterface.createTable('stocks', {
+      id: {
+        type: Sequelize.BIGINT,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      product_id:{
+        type: Sequelize.BIGINT,
+        allowNull: false,
+      },
+      size:{
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      actual_price:{
+        type: Sequelize.NUMBER,
+        allowNull: false,
+      },
+      sell_price:{
+        type: Sequelize.NUMBER,
+        allowNull: false,
+      },
+      total:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      edit_by:{
+        type: Sequelize.BIGINT,
+        allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('NOW()')
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('NOW()')
+      }
+    });
+
+    await queryInterface.addIndex('stocks', ['product_id'], {
+      name: 'idx_stocks_product_id'
+    });
+
+    await queryInterface.addIndex('stocks', ['edit_by'], {
+      name: 'idx_stocks_edit_by'
+    });
   },
 
   async down (queryInterface, Sequelize) {
@@ -18,5 +67,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropTable('stocks');
   }
 };

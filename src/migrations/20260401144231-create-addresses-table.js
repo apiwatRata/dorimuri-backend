@@ -32,6 +32,10 @@ module.exports = {
         type: Sequelize.STRING(255),
         allowNull: false,
       },
+      province:{
+        type: Sequelize.STRING(50),
+        allowNull: false,
+      },
       district:{
         type: Sequelize.STRING(255),
         allowNull: false,
@@ -47,6 +51,11 @@ module.exports = {
       postcode:{
         type: Sequelize.STRING(5),
         allowNull: false,
+      },
+      is_main:{
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       created_at: {
         type: Sequelize.DATE,

@@ -9,21 +9,28 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('user_tokens', {
+    await queryInterface.createTable('promotions', {
       id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true
       },
-      user_id:{
+      name:{
+        type: Sequelize.STRING(100),
+        allowNull: false,
+      },
+      detail:{
+        type: Sequelize.STRING,
+      },
+      edit_by:{
         type: Sequelize.BIGINT,
         allowNull: false,
       },
-      google_uuid:{
-        type: Sequelize.STRING,
+      start_date: {
+        type: Sequelize.DATE,
       },
-      facebook_uuid:{
-        type: Sequelize.STRING,
+      end_date: {
+        type: Sequelize.DATE,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -36,6 +43,7 @@ module.exports = {
         defaultValue: Sequelize.literal('NOW()')
       }
     });
+
   },
 
   async down (queryInterface, Sequelize) {
@@ -45,6 +53,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('user_tokens');
+    await queryInterface.dropTable('promotions');
   }
 };
