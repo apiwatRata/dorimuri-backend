@@ -24,12 +24,12 @@ module.exports = {
         allowNull: false,
       },
       discount:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
         defaultValue: 0
       },
       total_price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       promotion_id:{
@@ -96,6 +96,12 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropIndex('orders', 'idx_orders_stock_id');
+    await queryInterface.dropIndex('orders', 'idx_orders_owner_id');
+    await queryInterface.dropIndex('orders', 'idx_orders_transaction_id');
+    await queryInterface.dropIndex('orders', 'idx_orders_promotion_id');
+    await queryInterface.dropIndex('orders', 'idx_orders_owner_status');
+    await queryInterface.dropIndex('orders', 'idx_orders_status');
     await queryInterface.dropTable('orders');
   }
 };

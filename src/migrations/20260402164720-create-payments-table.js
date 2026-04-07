@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
       },
       paid_price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       status:{
@@ -67,8 +67,8 @@ module.exports = {
       name: 'idx_payments_owner_id'
     });
 
-    await queryInterface.addIndex('payments', ['tranasction_id'], {
-      name: 'idx_payments_tranasction_id'
+    await queryInterface.addIndex('payments', ['transaction_id'], {
+      name: 'idx_payments_transaction_id'
     });
 
     await queryInterface.addIndex('payments', ['confirm_by'], {
@@ -95,6 +95,12 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropIndex('payments', 'idx_payments_owner_id');
+    await queryInterface.dropIndex('payments', 'idx_payments_transaction_id');
+    await queryInterface.dropIndex('payments', 'idx_payments_confirm_by');
+    await queryInterface.dropIndex('payments', 'idx_payments_is_confirm');
+    await queryInterface.dropIndex('payments', 'idx_payments_owner_status');
+    await queryInterface.dropIndex('payments', 'idx_payments_status');
     await queryInterface.dropTable('payments');
   }
 };

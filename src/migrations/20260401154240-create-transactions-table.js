@@ -16,16 +16,16 @@ module.exports = {
         primaryKey: true
       },
       total_price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       discount:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
         defaultValue: 0
       },
       paid_price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       status:{
@@ -72,6 +72,9 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropIndex('transactions', 'idx_transactions_owner_id');
+    await queryInterface.dropIndex('transactions', 'idx_transactions_address_id');
+    await queryInterface.dropIndex('transactions', 'idx_transactions_status');
     await queryInterface.dropTable('transactions');
   }
 };

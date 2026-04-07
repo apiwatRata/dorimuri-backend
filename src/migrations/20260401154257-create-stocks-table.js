@@ -24,11 +24,11 @@ module.exports = {
         allowNull: false,
       },
       actual_price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       sell_price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       total:{
@@ -67,6 +67,8 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropIndex('stocks', 'idx_stocks_product_id');
+    await queryInterface.dropIndex('stocks', 'idx_stocks_edit_by');
     await queryInterface.dropTable('stocks');
   }
 };

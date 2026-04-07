@@ -76,6 +76,8 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
+    await queryInterface.dropIndex('users', 'idx_users_username');
+    await queryInterface.dropIndex('users', 'idx_users_email');
     await queryInterface.dropTable('users');
   }
 };
