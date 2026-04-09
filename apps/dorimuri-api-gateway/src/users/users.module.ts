@@ -9,9 +9,10 @@ import { UsersController } from './users.controller';
     ClientsModule.register([
       {
         name: 'USERS_CLIENT',
-        transport: Transport.TCP,
+        transport: Transport.REDIS,
         options: {
-          port: 3001,
+          host: 'localhost',
+          port: 6379,
         },
       },
     ]),
