@@ -21,7 +21,7 @@ module.exports = {
         unique: true
       },
       birth_date: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       email: {
