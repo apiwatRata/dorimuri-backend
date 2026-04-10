@@ -6,7 +6,7 @@ import { UserDto } from './dto/user.dto';
 export class UsersService {
     constructor(@Inject('USERS_CLIENT') private usersClient: ClientProxy) {}
 
-    findAll() {
+    getUsers() {
        return this.usersClient.send<UserDto>('users.findAll', {});
     }
 }
