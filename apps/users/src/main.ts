@@ -5,10 +5,15 @@ import { UsersModule } from './users.module';
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     UsersModule,{
-      transport: Transport.REDIS,
+      transport: Transport.KAFKA,
       options: {
-        host: 'localhost',
-        port: 6379,
+        client: {
+          clientId: 'users',
+          brokers: ['localhost:9092'],
+        },
+        consumer: {
+          groupId: 'users-consumer'
+        }
       },
   },);
   await app.listen();
