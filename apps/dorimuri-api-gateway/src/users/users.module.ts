@@ -6,11 +6,16 @@ import { UsersResolver } from './users.resolver';
   imports:[
     ClientsModule.register([
       {
-        name: 'USERS_CLIENT',
-        transport: Transport.REDIS,
+        name: 'USERS_SERVICE',
+        transport: Transport.KAFKA,
         options: {
-          host: 'localhost',
-          port: 6379,
+          client: {
+            clientId: 'users',
+            brokers: ['localhost:9092'],
+          },
+          consumer: {
+            groupId: 'users-consumer'
+          }
         },
       },
     ])
