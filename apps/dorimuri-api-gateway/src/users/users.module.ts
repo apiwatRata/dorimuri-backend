@@ -14,7 +14,7 @@ import { UsersResolver } from './users.resolver';
             brokers: ['localhost:9092'],
           },
           consumer: {
-            groupId: 'users-consumer'
+            groupId: 'users-consumer',
           }
         },
       },

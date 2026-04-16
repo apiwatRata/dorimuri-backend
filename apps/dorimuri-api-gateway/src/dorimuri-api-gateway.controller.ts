@@ -5,8 +5,4 @@ import { DorimuriApiGatewayService } from './dorimuri-api-gateway.service';
 export class DorimuriApiGatewayController {
   constructor(private readonly dorimuriApiGatewayService: DorimuriApiGatewayService) {}
 
-  @Get()
-  getHello(): string {
-    return this.dorimuriApiGatewayService.getHello();
-  }
 }

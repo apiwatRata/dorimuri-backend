@@ -21,7 +21,7 @@ module.exports = {
         unique: true
       },
       birth_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       email: {
@@ -32,7 +32,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
       },
       sex: {
         type: Sequelize.INTEGER,
